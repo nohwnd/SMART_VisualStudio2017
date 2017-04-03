@@ -3,7 +3,7 @@
 
 namespace Csharp7
 {
-    public class Playground_Tuple
+    internal class PlaygroundTuple
     {
         public void BuildTuple()
         {
@@ -59,7 +59,7 @@ namespace Csharp7
     }
 
     // useful as return types (but not necessarily for public methods)
-    static class Math2
+    internal static class Math2
     {
         static (int result, int reminder) Divide(int dividend, int divisor)
         {
@@ -67,11 +67,26 @@ namespace Csharp7
         }
     }
 
-    //or to hold correlated values 
-    class Session
+    // or to hold correlated values 
+    internal class Session
     {
         private (int r, int g, int b) color = new ValueTuple<int, int, int>();
 
         // ...
+    }
+
+    // you can also use it to simplify try pattern 
+    internal class Int2
+    {
+        static (bool success, int value) TryParse(string text)
+        {
+            return (int.TryParse(text, out int parsed), parsed);
+        }
+
+        // nicer naming but harder to explain
+        static (bool success, int value) TryParse2(string value)
+        {
+            return (int.TryParse(value, out int parsed), parsed);
+        }
     }
 }
