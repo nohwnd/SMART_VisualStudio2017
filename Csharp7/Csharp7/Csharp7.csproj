@@ -4,7 +4,13 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP1_1, __DEMO__</DefineConstants>
+    <LangVersion>7</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.4.3" />
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />
   </ItemGroup>
 
