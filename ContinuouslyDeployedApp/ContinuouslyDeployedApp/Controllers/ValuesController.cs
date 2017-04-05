@@ -25,7 +25,6 @@ namespace ContinuouslyDeployedApp.Controllers
             if (id < 0 || _values.Length - 1 < id)
                 return BadRequest();
             
-
                 return Ok(_values[id]);
         }
 
