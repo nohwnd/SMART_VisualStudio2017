@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  continuouslydeployedapp:
+    image: continuouslydeployedapp
+    build:
+      context: ./ContinuouslyDeployedApp
+      dockerfile: Dockerfile
