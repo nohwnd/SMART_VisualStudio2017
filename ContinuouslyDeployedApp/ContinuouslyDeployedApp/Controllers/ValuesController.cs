@@ -9,19 +9,23 @@ namespace ContinuouslyDeployedApp.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private string[] _values = new [] { "value1", "value2" };
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public  IActionResult Get()
         {
-            throw new DllNotFoundException("Boom, haaha you lost!");
-            return new string[] { "value1", "value2" };
+            return Ok(_values);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            if (id < 0 || _values.Length - 1 < id)
+                return BadRequest();
+            
+                return Ok(_values[id]);
         }
 
         // POST api/values
